@@ -5,32 +5,41 @@ import TopTags from "../components/TopTags";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { articles } from "../utils/dummyData";
+// import { articles } from "../utils/dummyData";
 import Footer from "../components/Footer";
 
-const URL =
-  "https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=" +
-  import.meta.env.VITE_API_KEY;
+// const URL =
+//   "https://gnews.io/api/v4/search?q=example&lang=en&country=in&max=20&apikey=" +
+//   import.meta.env.VITE_API_KEY;
 
 const Home = () => {
-  //   const [articles, setArticles] = useState(null);
+  const [articles, setArticles] = useState(null);
+  const [search, setSearch] = useState("");
+  const [language, setlanguage] = useState("en");
 
-  //   useEffect(() => {
-  //     async function fetchArticles() {
-  //       const data = await axios.get(URL);
-  //       console.log(data.data);
-  //       setArticles(data.data);
-  //     }
+  useEffect(() => {
+    // console.log(search);
+    async function fetchArticles() {
+      const data = await axios.get(
+        `https://gnews.io/api/v4/search?q="${
+          search || "example"
+        }"&lang=${language}&country=in&max=20&apikey=${
+          import.meta.env.VITE_API_KEY
+        }`
+      );
+      //   console.log(data.data.articles);
+      setArticles(data.data.articles);
+    }
 
-  //     fetchArticles();
-  //   }, []);
+    fetchArticles();
+  }, [search]);
 
   return (
     <div className="w-screen flex flex-col items-center h-screen">
-      <Navbar />
+      <Navbar search={search} setSearch={setSearch} />
       <TopTags />
       <Main articles={articles} />
-      <PopularPosts />
+      <PopularPosts articles={articles} />
       <Footer />
     </div>
   );

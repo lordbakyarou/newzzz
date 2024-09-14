@@ -24,7 +24,7 @@ const Carousel = ({ articles }) => {
       data-carousel="slide"
     >
       <div className="relative h-96 w-full overflow-hidden rounded-lg md:h-96">
-        {articles.slice(2, articles.length - 1).map((article, index) => (
+        {articles?.slice(2, articles.length - 1).map((article, index) => (
           <div
             key={article.publishedAt}
             className={`absolute duration-700 w-full h-full ease-in-out bg-cover bg-center ${
@@ -51,7 +51,7 @@ const Carousel = ({ articles }) => {
       </div>
 
       <div className="absolute z-30 flex -translate-x-1/2 bottom-1 left-1/2 space-x-3 rtl:space-x-reverse">
-        {articles.slice(2, articles.length - 1).map((article, index) => (
+        {articles?.slice(2, articles.length - 1).map((article, index) => (
           <button
             key={article.publishedAt}
             type="button"
@@ -72,7 +72,7 @@ const Carousel = ({ articles }) => {
         onClick={prevSlide}
         className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
       >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/40 group-hover:bg-white/50">
           <svg
             className="w-4 h-4 text-white"
             fill="none"
@@ -95,7 +95,7 @@ const Carousel = ({ articles }) => {
         onClick={nextSlide}
         className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
       >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/40 group-hover:bg-white/50">
           <svg
             className="w-4 h-4 text-white"
             fill="none"

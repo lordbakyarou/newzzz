@@ -1,12 +1,13 @@
+import LanguageSelector from "./LanguageSelector";
 import Search from "./Search";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-const Navbar = () => {
+const Navbar = ({ search, setSearch }) => {
   return (
     <nav className="flex justify-between w-full p-5">
       <div className="flex gap-20 items-center">
         <div className="text-orange-500 text-3xl font-bold">Newzzz</div>
-        <ul className="flex gap-10 text-md items-center font-semibold">
+        <ul className="flex gap-5 text-md items-center font-semibold">
           <li className="flex items-center">
             <p className="cursor-pointer">Categories</p>
             <MdKeyboardArrowDown className="text-md text-gray-500 hover:text-gray-700 cursor-pointer" />
@@ -23,7 +24,8 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <Search />
+
+      <Search search={search} setSearch={setSearch} />
     </nav>
   );
 };
