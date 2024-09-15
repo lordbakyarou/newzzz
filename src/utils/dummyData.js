@@ -1,4 +1,4 @@
-export const articles = [
+export const dummyArticles = [
   {
     title:
       "I tested Google's new smart thermostat, and it managed my home like a champ",

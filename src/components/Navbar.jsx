@@ -1,8 +1,7 @@
-import LanguageSelector from "./LanguageSelector";
 import Search from "./Search";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-const Navbar = ({ search, setSearch }) => {
+const Navbar = () => {
   return (
     <nav className="flex justify-between w-full p-5">
       <div className="flex gap-20 items-center">
@@ -25,7 +24,7 @@ const Navbar = ({ search, setSearch }) => {
         </ul>
       </div>
 
-      <Search search={search} setSearch={setSearch} />
+      <Search />
     </nav>
   );
 };

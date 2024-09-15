@@ -1,17 +1,19 @@
 import { IoIosSearch } from "react-icons/io";
 import LanguageSelector from "./LanguageSelector";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const Search = ({ search, setSearch, onSearch }) => {
-  const [inputValue, setInputValue] = useState(search);
+import { changeSearch } from "../redux/searchSlice";
+
+const Search = () => {
+  const [inputValue, setInputValue] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Trigger the search action with the current input value
-    setSearch(inputValue);
-    if (onSearch) {
-      onSearch(inputValue); // Optional callback for parent component
-    }
+    dispatch(changeSearch(inputValue));
   };
 
   return (

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCountry } from "../redux/countrySlice";
 
 const LanguageSelector = () => {
   // Set up state for the selected language (abbreviation)
@@ -6,15 +8,17 @@ const LanguageSelector = () => {
     code: "EN",
     icon: "us",
   });
+
+  const dispatch = useDispatch();
+
   const [isOpen, setIsOpen] = useState(false);
+
+  const country = useSelector((state) => state.country.country);
 
   // Define language options with abbreviations and icons
   const languageOptions = [
     { label: "Hindi", code: "HI", icon: "in" },
     { label: "English", code: "EN", icon: "us" },
-    { label: "Spanish", code: "ES", icon: "es" },
-    { label: "French", code: "FR", icon: "fr" },
-    { label: "German", code: "DE", icon: "de" },
   ];
 
   // Toggle dropdown visibility
@@ -24,22 +28,16 @@ const LanguageSelector = () => {
 
   // Function to update the selected language and store it in localStorage
   const handleLanguageSelect = ({ code, icon }) => {
-    // console.log(code, icon);
     setSelectedLanguage({ code, icon });
-    localStorage.setItem("selectedLanguage", { code, icon });
+    dispatch(changeCountry(icon));
     setIsOpen(false);
   };
 
-  // On component mount, check if there's a language stored in localStorage
-  //   useEffect(() => {
-  //     const storedLanguage = localStorage.getItem("selectedLanguage");
-  //     if (storedLanguage) {
-  //       console.log(storedLanguage);
-  //       setSelectedLanguage(storedLanguage);
-  //     }
-  //   }, []);
-
-  console.log(selectedLanguage);
+  useEffect(() => {
+    setSelectedLanguage(
+      ...languageOptions.filter((lan) => country === lan.icon)
+    );
+  }, []);
 
   return (
     <div className="relative ml-2 z-40 inline-block text-left">
