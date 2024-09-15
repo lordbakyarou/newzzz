@@ -5,7 +5,7 @@ const MainArticle = ({ article }) => {
 
   return (
     <div
-      className="relative w-full h-96 rounded-xl bg-cover bg-center shadow-lg"
+      className="relative max-lg:hidden w-full h-96 rounded-xl bg-cover bg-center shadow-lg"
       style={{
         backgroundImage: `url(${article.image || defaultImage})`,
       }}

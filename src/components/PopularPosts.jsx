@@ -28,7 +28,7 @@ const PopularPosts = ({ articles }) => {
       <div className="text-2xl flex gap-2 items-center font-bold">
         <div className="w-2 h-5 rounded bg-red-500"></div>Popular Posts
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid max-sm:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {articles?.map((article) => (
           <PostCards
             article={article}

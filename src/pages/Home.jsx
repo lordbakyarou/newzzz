@@ -19,7 +19,7 @@ const Home = () => {
 
   const country = useSelector((state) => state.country.country);
 
-  console.log(country);
+  // console.log(country);
 
   const search = useSelector((state) => state.search.search);
 
@@ -48,7 +48,7 @@ const Home = () => {
     <div className="w-screen flex flex-col items-center h-screen">
       <Navbar />
       <TopTags />
-      {articles ? (
+      {articles?.length > 0 ? (
         <>
           <Main articles={articles} />
           <PopularPosts articles={articles} />

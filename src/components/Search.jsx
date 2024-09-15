@@ -17,7 +17,10 @@ const Search = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center max-w-sm">
+    <form
+      onSubmit={handleSubmit}
+      className="flex items-center max-w-sm max-sm:w-full"
+    >
       <label htmlFor="simple-search" className="sr-only">
         Search
       </label>
